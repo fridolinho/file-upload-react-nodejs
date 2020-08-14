@@ -10,15 +10,11 @@ function App() {
 
   }
 
-  const onClickHandler = () => {
+  const onClickHandler = async () => {
     const data = new FormData() 
     data.append('file', selectedFile)
-    axios.post("http://localhost:8000/upload", data, { 
-      // receive two    parameter endpoint url ,form data
-    })
-  .then(res => { // then print response status
-      console.log(res.statusText)
-  })
+    const res = await axios.post("http://localhost:8000/upload", data)
+    console.log('resultats', res);
   }
 
   return (
